@@ -1,5 +1,6 @@
 'use client'
 
+import { Analytics } from "@vercel/analytics/react"
 import { useUser } from "@clerk/nextjs"
 import { useEffect, useState } from "react"
 import { collection, doc, getDoc, setDoc } from "firebase/firestore"

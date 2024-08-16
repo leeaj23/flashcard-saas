@@ -1,5 +1,6 @@
 'use client'
 
+import { Analytics } from "@vercel/analytics/react"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import getStripe from "@/utils/get-stripe"

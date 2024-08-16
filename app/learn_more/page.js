@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react"
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Container, Toolbar, Typography, Button, AppBar, Box, Grid  } from "@mui/material";
 
