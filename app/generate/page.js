@@ -2,7 +2,8 @@
 
 import { db } from "@/firebase";
 import { useUser } from "@clerk/nextjs"
-import { Box, Button, Card, CardActionArea, CardContent, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Paper, TextField, Typography } from "@mui/material";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { AppBar, Toolbar, Box, Button, Card, CardActionArea, CardContent, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Paper, TextField, Typography } from "@mui/material";
 import { doc, writeBatch, collection, getDoc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -76,6 +77,23 @@ export default function Generate() {
     }
 
     return (<Container maxWidth='lg'>
+        <AppBar position='static'>
+            <Toolbar>
+            <Typography style={{flexGrow: 1}}>
+                <Button sx={{mr: 4, fontFamily: "roboto", fontSize: "20px"}} variant="text" color='inherit' href='/'>Flashcard SaaS</Button>
+            </Typography>
+            <SignedOut>
+                <Button color="inherit" href="/sign-in">Login</Button>
+                <Button color="inherit" href="/sign-up">Sign Up</Button>
+            </SignedOut>
+            <SignedIn>            
+                <Button sx={{mr: 4}} variant="outlined" color='inherit' href='/flashcards'>Current Decks</Button>
+                <Button sx={{mr: 4}} variant="outlined" color='inherit' href='/generate'>Generate Deck</Button>
+                <UserButton/>
+            </SignedIn>
+            </Toolbar>
+        </AppBar>
+
         <Box sx={{mt:4, mb:6, display: 'flex', flexDirection:"column", alignItems:'center'}}>
             <Typography variant="h4">Generate Flashcards</Typography>
             <Paper sx={{p:4, width:"100%"}}>

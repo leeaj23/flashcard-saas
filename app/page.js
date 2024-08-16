@@ -38,14 +38,16 @@ export default function Home() {
 
       <AppBar position='static'>
         <Toolbar>
-          <Typography variant="h6" style={{flexGrow:1}}>
-            Flashcard Saas
+          <Typography style={{flexGrow: 1}}>
+            <Button sx={{mr: 4, fontFamily: "roboto", fontSize: "20px"}} variant="text" color='inherit' href='/'>Flashcard SaaS</Button>
           </Typography>
           <SignedOut>
             <Button color="inherit" href="/sign-in">Login</Button>
             <Button color="inherit" href="/sign-up">Sign Up</Button>
           </SignedOut>
           <SignedIn>
+            <Button sx={{mr: 4}} variant="outlined" color='inherit' href='/flashcards'>Current Decks</Button>
+            <Button sx={{mr: 4}} variant="outlined" color='inherit' href='/generate'>Generate Deck</Button>
             <UserButton/>
           </SignedIn>
         </Toolbar>
@@ -61,7 +63,7 @@ export default function Home() {
         <Button variant="contained" color="primary" sx={{mt: 2, mr: 2}} href="/generate">
           Get Started
         </Button>
-        <Button variant="outlined" color="primary" sx={{mt: 2}}>
+        <Button variant="outlined" color="primary" sx={{mt: 2}} href="/learn_more">
           Learn More
         </Button>
       </Box>

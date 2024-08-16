@@ -6,7 +6,8 @@ import { collection, doc, getDoc, setDoc } from "firebase/firestore"
 import { db } from "@/firebase"
 import { useRouter } from "next/navigation"
 import { Router } from "next/router"
-import { Card, CardActionArea, CardContent, Container, Grid, Typography } from "@mui/material"
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { AppBar, Button, Toolbar, Card, CardActionArea, CardContent, Container, Grid, Typography } from "@mui/material"
 
 export default function Flashcards() {
     const {isLoaded, isSignedIn, user} = useUser();
@@ -39,7 +40,24 @@ export default function Flashcards() {
         router.push(`/flashcard?id=${id}`)
     }
 
-    return (<Container maxWidth="100vw">
+    return (<Container maxWidth="lg">
+        <AppBar position='static'>
+            <Toolbar>
+            <Typography style={{flexGrow: 1}}>
+                <Button sx={{mr: 4, fontFamily: "roboto", fontSize: "20px"}} variant="text" color='inherit' href='/'>Flashcard SaaS</Button>
+            </Typography> 
+            <SignedOut>
+                <Button color="inherit" href="/sign-in">Login</Button>
+                <Button color="inherit" href="/sign-up">Sign Up</Button>
+            </SignedOut>
+            <SignedIn>
+                <Button sx={{mr: 4}} variant="outlined" color='inherit' href='/flashcards'>Current Decks</Button>
+                <Button sx={{mr: 4}} variant="outlined" color='inherit' href='/generate'>Generate Deck</Button>
+                <UserButton/>
+            </SignedIn>
+            </Toolbar>
+        </AppBar>
+
         <Grid container spacing = {3} sx={{mt: 4}}>
             {flashcards.map((flashcard, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>

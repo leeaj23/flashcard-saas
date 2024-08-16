@@ -1,11 +1,11 @@
 'use client'
 
-import { useUser } from "@clerk/nextjs";
+import { useUser, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { collection, doc, getDoc, setDoc, getDocs } from "firebase/firestore";
 import { db } from "@/firebase";
 import { useSearchParams } from "next/navigation";
-import { Box, Card, CardActionArea, CardContent, Container, Grid, Typography } from "@mui/material";
+import { AppBar, Toolbar, Button, Box, Card, CardActionArea, CardContent, Container, Grid, Typography } from "@mui/material";
 
 export default function Flashcard() {
     const {isLoaded, isSignedIn, user} = useUser();
@@ -39,6 +39,24 @@ export default function Flashcard() {
 
     return (
         <Container maxWidth="lg">
+            <AppBar position='static'>
+                <Toolbar>
+                <Typography style={{flexGrow: 1}}>
+                    <Button sx={{mr: 4, fontFamily: "roboto", fontSize: "20px"}} variant="text" color='inherit' href='/'>Flashcard SaaS</Button>
+                </Typography>
+                
+                <SignedOut>
+                    <Button color="inherit" href="/sign-in">Login</Button>
+                    <Button color="inherit" href="/sign-up">Sign Up</Button>
+                </SignedOut>
+                <SignedIn>
+                    <Button sx={{mr: 4}} variant="outlined" color='inherit' href='/flashcards'>Current Decks</Button>
+                    <Button sx={{mr: 4}} variant="outlined" color='inherit' href='/generate'>Generate Deck</Button>
+                    <UserButton/>
+                </SignedIn>
+                </Toolbar>
+            </AppBar>
+        
             <Box sx={{mt: 4, textAlign:'center'}}>
                 <Typography variant="h3">{search}</Typography>
                 <Grid container spacing={3} sx={{ mt: 4 }}>
