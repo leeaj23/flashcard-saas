@@ -77,6 +77,32 @@ export default function Generate() {
         }
     }
 
+    if (!isLoaded || !isSignedIn) 
+        return (<Container maxWidth='lg'>
+        <Analytics></Analytics>
+        <AppBar position='static'>
+            <Toolbar>
+            <Typography style={{flexGrow: 1}}>
+                <Button sx={{mr: 4, fontFamily: "roboto", fontSize: "20px"}} variant="text" color='inherit' href='/'>Flashcard SaaS</Button>
+            </Typography>
+            <SignedOut>
+                <Button color="inherit" href="/sign-in">Login</Button>
+                <Button color="inherit" href="/sign-up">Sign Up</Button>
+            </SignedOut>
+            <SignedIn>            
+                <Button sx={{mr: 4}} variant="outlined" color='inherit' href='/flashcards'>Current Decks</Button>
+                <Button sx={{mr: 4}} variant="outlined" color='inherit' href='/generate'>Generate Deck</Button>
+                <UserButton/>
+            </SignedIn>
+            </Toolbar>
+        </AppBar>
+        <Box sx={{textAlign: 'center', my: 4}}>
+            <Typography variant="h4" component="h1" gutterBottom>
+            Please sign-up/login before utilizing the application.
+            </Typography>
+        </Box>
+    </Container>)
+
     return (<Container maxWidth='lg'>
         <Analytics></Analytics>
         <AppBar position='static'>
