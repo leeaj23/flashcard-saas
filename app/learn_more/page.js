@@ -3,6 +3,7 @@ import { Container, Toolbar, Typography, Button, AppBar, Box, Grid  } from "@mui
 
 export default function LearnMore() {
     return (<Container maxWidth="lg">
+        <Analytics></Analytics>
         <AppBar position='static'>
             <Toolbar>
             <Typography style={{flexGrow: 1}}>

@@ -39,6 +39,7 @@ export default function Flashcard() {
 
     return (
         <Container maxWidth="lg">
+            <Analytics></Analytics>
             <AppBar position='static'>
                 <Toolbar>
                 <Typography style={{flexGrow: 1}}>

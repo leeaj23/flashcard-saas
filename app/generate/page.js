@@ -77,6 +77,7 @@ export default function Generate() {
     }
 
     return (<Container maxWidth='lg'>
+        <Analytics></Analytics>
         <AppBar position='static'>
             <Toolbar>
             <Typography style={{flexGrow: 1}}>

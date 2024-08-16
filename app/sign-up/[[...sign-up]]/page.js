@@ -4,9 +4,12 @@ import Link from "next/link";
 
 export default function SignUpPage() {
     return (<Container maxWidth="lg">
+        <Analytics></Analytics>
         <AppBar position="static" sx = {{backgroundColor:"#3f515"}}>
             <Toolbar>
-                <Typography variant="h6" sx={{flexGrow: 1}}>Flashcard SaaS</Typography>
+            <Typography style={{flexGrow: 1}}>
+            <Button sx={{mr: 4, fontFamily: "roboto", fontSize: "20px"}} variant="text" color='inherit' href='/'>Flashcard SaaS</Button>
+          </Typography>
                 <Button color="inherit">
                     <Link href='/sign-in' passHref>Login</Link>
                 </Button>
