@@ -1,5 +1,5 @@
 'use client'
-
+import { Analytics } from "@vercel/analytics/react"
 import getStripe from "@/utils/get-stripe";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Container, Toolbar, Typography, Button, AppBar, Box, Grid  } from "@mui/material";
@@ -34,7 +34,7 @@ export default function Home() {
         <title>Flashcard Saas</title>
         <meta name = 'description' content='Create Flashcards from Text'/>
       </Head>
-
+      <Analytics></Analytics>
       <AppBar position='static'>
         <Toolbar>
           <Typography style={{flexGrow: 1}}>
